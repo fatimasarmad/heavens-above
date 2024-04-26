@@ -4,7 +4,17 @@ const fs = require("fs");
 const utils = require("./utils");
 
 const eventsIridium = ["brightness", "altitude", "azimuth", "satellite", "distanceToFlareCentre", "brightnessAtFlareCentre", "date", "time", "distanceToSatellite", "AngleOffFlareCentre-line", "flareProducingAntenna", "sunAltitude", "angularSeparationFromSun", "image", "id"];
-
+/**
+ * Fetches data from the IridiumFlares.aspx page, parses it, and stores it in a local database.
+ * 
+ * @param {Object} config - Configuration object.
+ * @param {Array} config.database - The existing database to which new data will be added. Defaults to an empty array.
+ * @param {number} config.counter - The current count of pages fetched. Defaults to 0.
+ * @param {number} config.opt - The options for the request. Defaults to 0.
+ * @param {string} config.root - The root directory where the fetched data will be stored.
+ * 
+ * @returns {void}
+ */
 function getTable(config) {
 	let database = config.database || [];
 	let counter = config.counter || 0;
